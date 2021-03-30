@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>Fruits
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Melon</li>
+    </ul>
+    <br><br><br>
+
+
+    <ul id="fruit">
+
+
+    </ul> 
+    <button>클릭</button>
+    
+    <script> 
+        let liTag = document.createElement("li"); // Tag만들겠다
+        let text = document.createTextNode("Apple"); //텍스트 값을 생성.
+        liTag.appendChild(text); // 하위요소로<li>Apple</li>라는 값을 달아주겠다
+        let ulTag = document.getElementById("fruit"); //ul태그의 id값//id값이 fruit인 주어진 값을 읽어오겠다.
+        ulTag.appendChild(liTag); // <ul><li>Apple</li></ul>
+        liTag = document.createElement("li");
+        text = document.createTextNode("Banana");
+        liTag.appendChild(text);//<li>Banana</li>
+        ulTag.appendChild(liTag);//<ul><li>Apple</li>
+                                //     <li>Banana</li>
+                                // </ul>
+        liTag = document.createElement("li");
+        text = document.createTextNode("Melon");
+        liTag.appendChild(text);
+        ulTag.appendChild(liTag);//<ul><li>Apple</li>
+                                //     <li>Banana</li>
+                                //     <li>Melon</li>
+                                // </ul>
+
+        let btn = document.createElement("button");
+
+        let inputTag = document.createElement("input");
+        inputTag.setAttribute("type","password");
+        inputTag.setAttribute("name", "passwd");
+        <input type="password" name="passwd"/>
+
+        let tbl = document.getElementById("logIn");
+
+//1번재 tr만들기
+        let trTag = document.createElement("tr");
+
+        let tdTag = document.createElement("td");
+        let text = document.createTextNode("이름:");
+        tdTag.appendChild(text);
+        trTag.appendChild(tdTag);
+
+        tdTag = document.createElement("td");
+        let inputTag = document.createElement("input");
+        inputTag.setAttribute("type", "text");
+        tdTag.appendChild(inputTag);
+        trTag.appendChild(tdTag);
+
+        tbl.appendChild(trTag);
+
+//2번째 tr만들기
+        trTag = document.createElement("tr"); 
+
+        tdTag = document.createElement("td");
+        text = document.createTextNode("비밀번호:");
+        tdTag.appendChild(text);
+        trTag.appendChild(tdTag);
+
+        tdTag = document.createElement("td");
+        inputTag = document.createElement("input");
+        inputTag.setAttribute("type", "password");
+        tdTag.appendChild(inputTag);
+        trTag.appendChild(tdTag);
+
+        tbl.appendChild(trTag);
+
+        //세번째tr
+        trTag = document.createElement("tr");
+        trTag.setAttribute("align","center");
+        tdTag = document.createElement("td");
+        tdTag.setAttribute("colspan","2");
+        inputTag = document.createElement("input");
+        inputTag.setAttribute("type", "submit");
+        trTag.appendChild(inputTag);
+        tdTag.appendChild(tdTag);
+
+        inputTag = document.createElement("input");
+        inputTag.setAttribute("type","reset");
+        trTag.appendChild(inputTag);
+        tdTag.appendChild(tdTag);
+
+        tbl.appendChild(trTag);
+    </script>
+</body>
+</html>

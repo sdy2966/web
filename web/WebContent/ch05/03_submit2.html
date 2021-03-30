@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>초기화양식만들기p167</title>
+</head>
+<body id="bdy">
+    <script>
+        
+        let bdy = document.getElementById("bdy");
+        let h2Tag = document.createElement("h2");
+        let htext = document.createTextNode("입력 데이터 초기화 버튼")
+
+        h2Tag.appendChild(htext);
+        bdy.appendChild(h2Tag);
+        
+        let frm = documnt.createElement("form");
+        frm.setAttribute("action", "page.jsp");
+        frm.setAttribute("method", "get");
+
+        bdy.appendChild(frm);
+
+        let pTag = document.createElement("P");
+        let inputTag = documnet.createElement("input");
+
+        inputTag.setAttribute("type", "text");
+        inputTag.setAttribute("name", "major");
+
+        frm.appendChild(pTag);
+        htext = document.createTextNode("이름: ");
+
+        pTag.appendChild(htext);
+        // let pCOnt = "학과";
+        // let text = document.createTextNode(pCon);
+        // pTag = document.createElement("P");
+        // pTag.appendChild();
+        // inputTag = document.createElement("input");
+        // inputTag.setAttribute("type", "submit");
+        // inputTag.setAttribute("value", "전송");
+        
+    </script>
+    
+</body>
+</html>
