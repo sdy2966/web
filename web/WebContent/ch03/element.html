@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        major {
+            display: block;
+            font-size: 16px;
+            color: lightblue;
+        }
+
+        department {
+            display: block; 
+            font-size: 16px; 
+            color: greenyellow;
+        }
+
+        .com {
+            font-size: 28;
+        }
+        /* major, 
+        department {
+            display: block;
+            font-size: 16px;
+            color: lightblue;
+        }
+        공통적으로 해줄떄 */
+
+    </style>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <!-- 정의된 태그 -->
+    <h1>문서의 제목</h1>
+    <a href="http://www.daum.net">DAUM</a>
+    <p />
+    <span>span영역</span>
+
+    <!-- 사용자 정의 태그 -->
+    <companay> <!--인라인레벨-->
+        <department style="display: block; font-size: 16px; color: greenyellow;">영업부</department><!--display: block넣어서 블락레벨로 만듦-->
+        <department style="font-size: 25px; background-color: rgb(255, 169, 169); color:rgb(195, 195, 195);">편집부
+            <team>그래픽팀
+            </team>
+        </department>
+    </companay>
+    <university style="display: bolck;" location="http://naver.com">한국대학교
+        <major>전자공학과</major>
+        <major>그래픽디자인과</major>
+    </university>
+    <script>
+        let univ = document.getElementById('nuiv');
+        let loc = nuiv.getAttribute('location');
+        univ.onclick = function() {
+            location.href = loc; //링크속성
+        }
+
+    </script>
+</body>
+</html>
