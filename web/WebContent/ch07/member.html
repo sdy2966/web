@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font: 14px/2.2 'NanumGothic';
+            color: #222;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            word-break: keep-all;
+            box-sizing: border-box;
+            font-family: "Apple SD Gothic Neo", Helvetica, arial, "나눔고딕", "Nanum Gothic", "맑은 고딕", "Malgun Gothic", "돋움", Dotum, Tahoma, Geneva, sans-serif;
+        }
+
+        header {
+            border-bottom: 1px solid rgb(236, 236, 236);
+            text-align: left;
+            font-weight: bold;
+            height: 7vh;
+            margin: 1%;
+        }
+
+        td {
+            font-size: 1px;
+            color: rgb(139, 139, 139);
+        }
+
+        span.m {
+            font-weight: bold;
+        }
+
+        input.butstyle {
+            border: 0;
+            /* line-height: 2.5; */
+            padding: 5px;
+            font-size: 9pt;
+            text-align: center;
+            color: #fff;
+            background: rgb(2, 179, 179);
+        }
+
+        input.text {
+            /* color: rgb(194, 194, 194); */
+            height: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <span>
+            회원정보
+        </span>
+        <span style="color: turquoise;">(필수)</span>
+        <!-- *는 필수 입력 사항입니다. -->
+    </header>
+    <section>
+        <div>
+            <span class="m">아이디</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span><input class="text" type="s"></span>
+            <input class="butstyle" value="아이디중복확인">
+            <!-- <span style="background-color:rgb(2, 179, 179); font-weight: bold; color: white; ">아이디중복확인</span> -->
+        </div>
+        <div>
+            <span class="m">비밀번호</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span><input class="text" type="s"></span>
+            <td>8~20자리의 영문, 숫자 조합(영문, 숫자, 특수기호 조합을 권장합니다)</td>
+        </div>
+        <div>
+            <span class="m">비밀번호 확인</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span><input class="text" type="s"></span>
+        </div>
+        <div>
+            <span class="m">이름</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span><input class="text" type="s"></span>
+        </div>
+        <div>
+            <span class="m">성별</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span><input type="radio" checked>여자
+                <input type="radio">남자</span>
+        </div>
+        <div>
+            <span class="m">생년월일</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span>
+                <select style="width: 100px; height: 29px;" name="year">
+                    <option value="0">선택</option>
+                    <option value="1">2021</option>
+                    <option value="2">2020</option>
+                    <option value="3">2019</option>
+                    <option value="4">2018</option>
+                    <option value="5">2017</option>
+                    <option value="5">1994</option>
+                </select>
+                <select name="m">
+                    <option value="0">선택</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">12</option>
+                </select>
+                <select name="d">
+                    <option value="0">선택</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <input type="radio" checked>양력
+                <input type="radio">음력
+            </span>
+        </div>
+        <div>
+            <span class="m">이메일</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span>
+                <input class="text" type="s" style="width: 120px;">@
+                <input class="text" type="s" style="width: 120px;">
+                <select name="email" style="width: 120px; height: 28px;">
+                    <option value="0">직접입력</option>
+                    <option value="1">naver.com</option>
+                    <option value="2">daum.net</option>
+                    <option value="3">gmail.com</option>
+                    <option value="3">yahoo.com</option>
+                </select>
+            </span>
+            <td>이메일 수신 동의 시, 신상품/할인혜택/이벤트 등의 정보를 받아보실 수 있습니다.</td>
+            <span>수신도으이 거부 시에도 기본서비스(주문배송 메일)는 발송됩니다.</span>
+            <input type="radio" checked>예
+            <input type="radio">아니오
+        </div>
+        <div>
+            <span class="m">휴대전화</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span>
+                <input class="text" type="s" style="width: 100px;"> -
+                <input class="text" type="s" style="width: 100px;"> -
+                <input class="text" type="s" style="width: 100px;">
+            </span>
+            할인혜택과 이벤트 등의 소식안내를 SMS로 받으실 수 있습니다.<br>
+            수신동의 거부 시에도 기본서비스는 발송됩니다.
+            <input type="radio" checked>예
+            <input type="radio">아니오
+        </div>
+        <div>
+            <span class="m">관심 브랜드</span>
+            <span style="color: rgb(250, 66, 33);">*</span>
+            <span>
+                <input type="checkbox">한빛미디어
+                <input type="checkbox">한빛아카데미<br>
+                <input type="checkbox">한빛라이프
+                <input type="checkbox">리얼타임 이북<br>
+                <input type="checkbox">한빛에듀
+            </span>
+        </div>
+    </section>
+</body>
+
+</html>
