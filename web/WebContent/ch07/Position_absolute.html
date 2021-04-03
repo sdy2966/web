@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ch07/Position_absolute.html</title>
+    <style>
+        div {
+            padding: 10px;
+            background-color: lightsalmon;
+            width: 100px;
+            left: 20px;
+            position: absolute;
+            /* simple4가 div태그를 기준으로 감쌈 */
+        }
+        p {
+            background-color: lightgoldenrodyellow;
+            width: 80px;
+        }
+        p:nth-child(3) {
+            color: lightskyblue;
+            position: fixed;
+            left: 170px;
+            top: 200px;
+        }
+        p:nth-child(4){
+            background-color: lightsteelblue;
+            position: relative;
+            /* 
+            원래위치에서 '옮겨'짐 */
+            left: 170px;
+            top: 100px;
+        }
+        P:nth-child(5) {
+            background-color: lightsteelblue;
+            position: sticky;
+            left: 170px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>sample1</p>
+        <p>sample2</p>
+        <p>sample3</p>
+        <p>sample4</p>
+        <p>sample5</p>
+        <p>sample6</p>
+        <p>sample7</p>
+        <p>sample8</p>
+        <p>sample9</p>
+        <p>sample10</p>
+        <p>sample11</p>
+    </div>
+</body>
+</html>

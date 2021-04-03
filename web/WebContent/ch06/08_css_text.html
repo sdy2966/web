@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p [text]{
+            color: darkturquoise;
+        }
+        p [text="red"]  {
+            color: deeppink;
+            background-color: deepskyblue;
+        }
+        p [text~="bb"] {
+            color: dimgray;
+            background-color: dodgerblue;
+        }
+        p [text|="a1"] {
+            color: yellowgreen;
+            background-color: aquamarine; 
+        }
+        p [text^="img"] {
+            color: blanchedalmond;
+            background-color: cadetblue;
+        }
+        p [text$=".png"] {
+            color:coral;
+            background-color: cornflowerblue;
+        }
+        p [text*=".ong"] {
+            color: coral;
+            background-color: crimson;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+        이름:<input type="text" name="" id="">
+        비밀번호:<input type="password" name="" id="">
+    </form>
+    <div>
+        <h2>Text Selector</h2>
+        <p text="hello">모든 텍스트</p>
+        <p text="red">텍스트 매칭 속성</p>
+        <p text="aa bb cc">리스트 매칭 속성</p>
+        <p text="a1-a2-a3">범위 텍스트 매칭 속성</p>
+        <p text="img/pic.jpg">텍스트 시작 매칭 속성</p>
+        <p text="img/pic.png">텍스트 끝 매칭 속성</p>
+        <p text="SungDA Yeong">텍스트 패턴 매칭 속성</p>
+    </div>
+    <button onclick="del_func()">Click</button>
+    <script>
+        let text = documnent.querySelectorAll('p[text~=cc');
+        for (let i=0; i< text.length; i++) {
+            text[i].remove();
+        }
+
+    </script>
+</body>
+</html>
