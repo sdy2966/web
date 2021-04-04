@@ -12,14 +12,16 @@
 	request.setCharacterEncoding("UTF-8"); 
 	
 	String id = request.getParameter("id");
+	String email1 = request.getParameter("email1");
 	String password = request.getParameter("passwd");
 	String name = request.getParameter("name");
 
-	String birthyy = request.getParameter("brt_yy");
-	String birthmm = request.getParameter("brt_mm");
-	String birthdd = request.getParameter("brt_dd");
+	String birthyy = request.getParameter("year");
+	String birthmm = request.getParameter("m");
+	String birthdd = request.getParameter("d");
 	 
-	String gender = request.getParameter("gender");
+	String gender = request.getParameter("sex");
+	String[] hobby = request.getParameterValues("hobby");
 	
 	
 %>
@@ -32,33 +34,41 @@
         
 	<table border="1">
 		<tr>
-			<th>아이디</th>
-			<td><%=id %></td>
+			<th>아이디(이메일)</th>
+			<td><%=id %>@<%=email1 %> </td>
 		</tr>
 		<tr>
-			<th id="title">비밀번호</th>
+			<th>비밀번호</th>
 			<td><%=password %></td>
 		</tr>
 		<tr>
-			<th id="title">이름</th>
+			<th >이름</th>
 			<td><%=name %></td>
 		</tr>
 		<tr>
-			<th id="title">생년월일</th>
-			<td><%=
-			
-			
+			<th>생년월일</th>
+			<td><%=birthyy%>
+					<%=birthmm%>
+					<%=birthdd%>
+			</td>
+		</tr>
+		<tr>
+			<th>성별</th>
+			<td><%=gender
 			%></td>
 		</tr>
 		<tr>
-			<th id="title">성별</th>
-			<td><%=
-		
-			
-			
-			%></td>
+			<th>취미</th>
+			<td><%
+			for(int i=0; i < hobby.length; i++) {
+				String selectHobby = hobby[i]; %>
+					<%=selectHobby %>,
+			<%}%>
+			</td>
 		</tr>
-	</table>
+	</table>	
+	<br>
+	<input type="button" value="Checked">
 	</div>
 </body>
 </html>
