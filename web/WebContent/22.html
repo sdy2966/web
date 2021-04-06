@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        //테이블 생성 태그를 연다.
+        document.write("<table width='80%' border='1' style='margin: auto; text-align: center'>");
+        
+        // for문 시작
+        for ( var i=0; i<6 ; i++) {
+         document.write("<tr>");    // <tr> : 행추가.
+        
+       
+         // 이중 for문 시작
+         for ( var j=0; j<7 ; j++) {
+          var txt="(" + i + "," + j + ")";    // 테이블각 셀에 (행,열) 값을 출력하기위해 정의된 String
+          document.write("<td>"+ txt +"</td>");     // <td> : 열추가.
+         } //end for j
+         
+       
+         document.write("</tr>");
+        } //end for i
+       
+        document.write("</table>");   // 테이블 태그를 닫는다.
+       
+         </script>
+</body>
+</html>

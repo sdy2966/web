@@ -1,0 +1,35 @@
+
+        * {
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        header.con {
+            background-color: rgb(184, 191, 255);
+            height: 10vh;
+        }
+        nav, section, footer {
+            
+            margin: 1% 1%;
+        }
+        nav {
+            background-color: rgb(253, 177, 150);
+            width: 23%;
+            height: 50vh;
+            float: left;
+        }
+        section {
+            background-color: cornflowerblue;
+            height: 50vh;
+            width: 8%
+            margin-left: 2%;
+        }
+        footer.footcon {
+            background-color: rgb(254, 255, 189);
+            height: 10vh;
+            clear: left;
+            width: 98%;
+            margin: 1% 1%;
+        }
+   

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar.html</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+    
+
+    <script>
+        //2021년 4월
+        let today = new Date();
+        let thisYear = today.getFullYear(); //2021
+        let thisMonth = today.getMonth(); //4월, 0부터 1월~
+        let thisDate = today.getDate(); //6일
+        let thisDay = today.getDay(); //0:일, 1:월~6:토
+        console.log(thisYear);
+        console.log(thisMonth);
+        console.log(thisDate);
+        console.log(thisDay);
+        
+        // let lastDate = new Date(thisYear, thisMonth, 0);// 이번달1일이 1, 지난달기준 마지막날0 ->
+        let lastDate = new Date(thisYear, thisMonth + 1, 0).getDate(); //이번달의 마지막날.
+        let firstDate = new Date(thisYear, thisMonth,1).getDay(); 
+        // let firstDay = firstDate.getDay(); //이번달 첫번쨰 날의 요일
+        let days = ['일', '월', '화', '수', '목', '금', '토'];
+
+        // document.write(firstDate);
+        document.write('<h1 style = "color: royalblue" >2021년 4월</h1>');
+        // document.write('<h1>' + thisYear + '년' + (thisMonth+1) + '월' + '</h1>');
+
+        //firstDay = 4
+        document.write('<table border="1">');
+        document.write('<tr>');
+        for (let i = 0; i < 7; i++) {
+        document.write('<td>' + days[i] + '</td>');
+        }
+        document.write('</tr>');
+        document.write('<tr>');
+         for (let i = 0; i < firstDate; i++) {
+            document.write('<td></td>');
+        }    
+        for(let i=1; i<=lastDate; i++) {
+            // document.write('<td>' + i + '</td>');
+            if ((firstDate+i) % 7 == 0) {
+                document.write('<td style="background-color: steelblue">'+i+'</td></tr><tr>')
+            } else if (i == thisDate) {
+                document.write('<td style="background-color: yellow;">'+ i +'</td>')
+            } else if ((firstDate-i) % 7 == 0) {
+                document.write('<td style="background-color: tomato;">'+ i +'</td>')
+            } else {
+                document.write('<td>'+ i + '</td>')
+            }
+        }
+        document.write('</tr></table>');
+        document.write('<h1 style = "color: red" >보고싶다...만식....</h1>');
+        
+    </script>
+  
+</body>
+
+</html>
