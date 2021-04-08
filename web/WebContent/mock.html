@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <table id='tb'></table>
+<body>
+    <script>
+    class Student {
+        constructor(id, firstName, lastName, email, gender, ip, button) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.ip = ip;
+    }
+}
+    let json =  [{
+           id:1,
+           first_name:"Davide",
+           last_name:"Garfoot",
+           email:"dgarfoot0@cloudflare.com",
+           gender:"Agender",
+           ip_address:"241.24.60.57"
+        },
+        {
+           id:2,
+           first_name:"Codi",
+           last_name:"Bittlestone",
+           email:"cbittlestone1@xrea.com",
+           gender:"Non-binary",
+           ip_address:"174.200.27.131"
+        },
+        {  id:3,
+           first_name:"Blanche",
+           last_name:"Snelgar",
+           email:"bsnelgar2@stanford.edu",
+           gender:"Polygender",
+           ip_address:"123.102.209.191"
+        },
+        {
+           id:4,
+           first_name:"Isabeau",
+           last_name:"Featonby",
+           email:"ifeatonby3@booking.com",
+           gender:"Agender",
+           ip_address:"8.113.135.185"
+        }]
+
+    let infostd = [];
+    infostd.push(json);
+
+    function createTr(std) {
+        let trTag = document.createElement('tr');
+        trTag.onmouseover = function () {//tr태그에 마우스를올리면 이벤트를 실행
+                this.style.backgroundColor = 'steelblue';
+                this.style.color = 'azure';
+            }
+            trTag.onmouseout = function () {//마우스 이벤트 빠져나옴
+                this.style.backgroundColor = '';
+            }
+
+            let td = document.createElement('td');
+            let chk = document.createElement('input');
+            chk.setAttribute('type','chekbox');
+            td.appendChild(chk);
+            trTag.appendChild(td);
+
+            for(field in std) {
+                let tdTag = document.createElement('td');
+                let text = document.createTextNode(std[field]);
+                tdTag.appendChild(text);
+                trTag.appendChild(tdTag);    
+                
+            }
+    }
+
+
+        console.log(json);
+</script>
+</body>
+</html>

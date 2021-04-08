@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-<!-- <script src="javaScript/basic.js"> </script>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+    <!-- <script src="javaScript/basic.js"> </script>
 <script src="javaScript/variable.js"> </script>
 <script src="javaScript/operator.js"> </script> -->
-<!-- 위 두개가 파일만 다르지 작업하는 영역은 같다 -->
+    <!-- 위 두개가 파일만 다르지 작업하는 영역은 같다 -->
 
     <!-- <style>
         div {
@@ -17,27 +18,119 @@
         }
     </style> -->
 </head>
-<body>
-    <div id ='show'></div>
+
+<body id="bdy">
+    <!-- <div id='show'></div> -->
     <ul id='list'></ul>
     <ul id="members"></ul>
+    <table id="tbl" border="1"></table>
     <p />
+    <button onclick='changeColor()'>색변경</button>
     <!-- <script src="javaScript/object.js"></script>꼭 헤더에 넣음 되긴되ㅇ느데 id 값을 못읽어옴...! -->
     <!-- <script src="javaScript/class.js"></script>
     <script src="javaScript/object2.js"></script> -->
     <!-- <scrsipt src="javaScript/Array.js"></script> -->
-        <script src="javaScript/String.js"></script>
-        <!-- <script src="javaScript/StringEmail.js"></script> -->
+    <!-- <script src="javaScript/String.js"></script> -->
+    <!-- <script src="javaScript/StringEmail.js"></script> -->
+    <!-- <script src="javaScript/function.js"></script> -->
     <script>
+        let numbers = [23, 45, 33, 56, 12];
+        let sum = 0;
+        let list = document.getElementById('list');
+        numbers.forEach(function (a, b, c) { //forEach메소드는 첫번째 값은 ~  이고 두번째 값은 배열을~   세번째값은 ~
+            sum += a;
+            let li = document.createElement('li');
+            let text = document.createTextNode(a);
+            li.appendChild(text);
+            list.appendChild(li);
+            //    console.log(a,b,c )
+        });
+        console.log(sum);
+
+            class Student {
+                constructor(sno, name, score) {
+                    this.sno = sno;
+                    this.name = name;
+                    this.score = score;
+                }
+            }
+
+        let student = {
+            sno: '1111',
+            name: 'Hong',
+            score: 80
+        }
+
+        let students = [];
+        students.push(student);
+        students.push(new Student('2222', 'KIM', 97));
+        students.push(new Student('3333', 'PARK', 83));
+        
+
+        // <tr><td>1111</td></tr>
+        function createTr(std) {
+            let trTag = document.createElement('tr');
+            trTag.onmouseover = function () {//tr태그에 마우스를올리면 이벤트를 실행
+                this.style.backgroundColor = 'green';
+            }
+            trTag.onmouseout = function () {//마우스 이벤트 빠져나옴
+                this.style.backgroundColor = '';
+            }
+            let tdTag = document.createElement('td');
+            let chk = document.createElement('input');
+            chk.setAttribute('type','checkbox');
+            tdTag.appendChild(chk);
+            trTag.appendChild(tdTag);
+
+            for(field in std) {  
+                let tdTag = document.createElement('td');
+                let text = document.createTextNode(std[field]);
+                tdTag.appendChild(text);
+                trTag.appendChild(tdTag);    
+                
+            }
+            tdTag = document.createElement('td');
+            let btn = document.createElement('button');
+            btn.innerHTML = 'OK';// <button onclick='clickFnc()'>OK</button>
+            btn.onclick = clickFnc; //clickFnc();이렇게 괄호를 붙여놓으면 코드를 쭉 읽으면서 실행되어 버린다. 클릭시에만 실행되도록 ()빼줌.
+            btn.setAttribute('type','button');
+                tdTag.appendChild(btn);
+                trTag.appendChild(tdTag);
+
+
+            return trTag;
+        }
+        let tbl =  document.getElementById('tbl')
+
+        students.forEach(function(val, idx, ary) {
+            let newTr = createTr(val);
+            tbl.appendChild(newTr);
+        });
+        
+        function clickFnc() {
+            this.parentNode.parentNode.remove();
+            // console.log(this.parentNode.parentNode.children[1].innerHTML);
+            // window.alert(this.parentNode.parentNode.children[1].innerHTML);//경고창에 id값을 띄워줌
+        }
+
+        
+
+        //선택
+        //id, first_name, last_name, email,gender, button
         
 
 
-        console.log(location.href);
-        console.log(this);
 
 
 
-        // let obj = {};  //new Objext();
+
+
+
+
+
+
+
+        // let obj = {};  //new Object();
         // obj.color = 'white';
         // obj.price = 1000000;
         // obj.info = function() {
@@ -48,10 +141,10 @@
         // console.log(obj.info);
         // function getTime() {
 
-        
+
 
         // let show = document.getElementById('show');
-       
+
         // let  time = new Date();
         // let year = time.getFullYear();
         // let month = time.getMonth();
@@ -61,15 +154,11 @@
         // let ss = time.getSeconds();
         // show.innerHTML = year + '년' + (month+1) + '월' + date + '일'+ hh + ':'+ mm +':' + ss;
 
-        
-    // }
-    // setInterval(function () {
-    //      getTime();
-    //     },1000);
 
-       
-        
-
+        // }
+        // setInterval(function () {
+        //      getTime();
+        //     },1000);
     </script>
 
     <!-- <button id='btn' style='display: block;'>Change Color</button>
@@ -81,4 +170,5 @@
       }
     </script> -->
 </body>
+
 </html>
