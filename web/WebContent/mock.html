@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-    <table id='tb'></table>
 <body>
+    <!-- <table id = 'tbl' border="1"></table> -->
     <script>
-    class Student {
-        constructor(id, firstName, lastName, email, gender, ip, button) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.gender = gender;
-        this.ip = ip;
-    }
-}
+    
+    let titles = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address' ];
+    let tr, td, text, chk;//변수선언
+
+    let bdy = document.getElementsByTagName('body');//배열임..!
+    let tbl = document.createElement('table');
+    tbl.setAttribute('border',1);
+    bdy[0].appendChild(tbl);
+
+
     let json =  [{
            id:1,
            first_name:"Davide",
@@ -52,33 +52,94 @@
            ip_address:"8.113.135.185"
         }]
 
-    let infostd = [];
-    infostd.push(json);
+    // function createTr(std) {
+    //     let tr = document.createElement('tr');
+    //     tr.onmouseover = function () {//tr태그에 마우스를올리면 이벤트를 실행
+    //             this.style.backgroundColor = 'steelblue';
+    //             this.style.color = 'azure';
+    //         }
+    //         tr.onmouseout = function () {//마우스 이벤트 빠져나옴
+    //             this.style.backgroundColor = '';
+    //         }
+    //     }  
+    
+            //타이틀
+            tr = document.createElement('tr');
+            th = document.createElement('th');
+            chk = document.createElement('input');//태그만듦
+            chk.setAttribute('type','checkbox');
+            th.appendChild(chk);
+            tr.appendChild(th); 
+            for(title of titles) { //배열[]쓸떈 of..! 
+                th = document.createElement('th');
+                text = document.createTextNode(title); 
+                th.appendChild(text);
+                tr.appendChild(th); 
+            }   
+            
+ 
+            //버튼
+            btn = document.createElement('input')//input 태그는 value로 값이 들어간다.
+                btn.setAttribute('type', 'button');
+                btn.setAttribute('value','Select Del');
+                td = document.createElement('td');
+                td.appendChild(btn);
+                tr.appendChild(td);  
+                tbl.appendChild(tr);
 
-    function createTr(std) {
-        let trTag = document.createElement('tr');
-        trTag.onmouseover = function () {//tr태그에 마우스를올리면 이벤트를 실행
-                this.style.backgroundColor = 'steelblue';
-                this.style.color = 'azure';
-            }
-            trTag.onmouseout = function () {//마우스 이벤트 빠져나옴
-                this.style.backgroundColor = '';
-            }
 
-            let td = document.createElement('td');
-            let chk = document.createElement('input');
-            chk.setAttribute('type','chekbox');
-            td.appendChild(chk);
-            trTag.appendChild(td);
+            //데이터 항목
+            for (data of json) { //id, first_name, last_name, email, gender, ip_address
+                tr = document.createElement('tr');
+                //체크박스
+                chk = document.createElement('input');//태그만듦
+                chk.setAttribute('type','checkbox');//속성부여
+                chk.onchange = selAll;
+                td = document.createElement('td');
+                td.appendChild(chk);
+                tr.appendChild(td);
 
-            for(field in std) {
-                let tdTag = document.createElement('td');
-                let text = document.createTextNode(std[field]);
-                tdTag.appendChild(text);
-                trTag.appendChild(tdTag);    
+                for(field in data) {
+                    //td항목들
+                    td = document.createElement('td');
+                    text = document.createTextNode(data[field]);
+                    td.appendChild(text);
+                    tr.appendChild(td);    
+                }
+                //버튼
                 
+                btn = document.createElement('input');
+                btn.setAttribute('type', 'button');
+                btn.setAttribute('value','Del');
+                btn.onclick = delFunc;
+                td = document.createElement('td');
+                td.appendChild(btn);
+                tr.appendChild(td);
+                tbl.appendChild(tr);
             }
-    }
+
+
+            //한건 선택 지우기.
+            function delFunc() {
+                console.log(this.parentNode.parentNode.remove());
+            }
+            //전체 선택
+            function selAll() {
+                let tChk = document.querySelector('th>input[type="checkbox]');// 선택자 체크한거만 갖고와!
+                let checks = document.querySelectorAll('td>input[type="checkbox]'); // 선택자 다 선택해와
+                for (let i=0; i<checks.length; i++) {
+                    checks[i].checked = tChk.checked;
+                }
+            }
+            //선택지우기
+            function delSelected () {
+                let checkedAll = document.querySelectorAll('td>input[type="checkbox]:checked');
+                console.log(checkedAll)
+                for(let i=0; i<checkedAll.length;i++){
+                    checkedAll[i].parentNode.parentNode.remove();
+                }
+            }
+    
 
 
         console.log(json);
