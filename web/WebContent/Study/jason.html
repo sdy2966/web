@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json</title>
+</head>
+<body>
+    <script>
+        
+        let titles = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address' ];
+        let tr, td, th, text, chk;
+
+        let bdy = document.getElementsByTagName('body');//body배열
+        let tbl = document.createElement('table');
+        tbl.setAttribute('border',1);
+        bdy[0].appendChild(tbl);
+
+        let json =  [{
+           id:1,
+           first_name:"Davide",
+           last_name:"Garfoot",
+           email:"dgarfoot0@cloudflare.com",
+           gender:"Agender",
+           ip_address:"241.24.60.57"
+        },
+        {
+           id:2,
+           first_name:"Codi",
+           last_name:"Bittlestone",
+           email:"cbittlestone1@xrea.com",
+           gender:"Non-binary",
+           ip_address:"174.200.27.131"
+        },
+        {  id:3,
+           first_name:"Blanche",
+           last_name:"Snelgar",
+           email:"bsnelgar2@stanford.edu",
+           gender:"Polygender",
+           ip_address:"123.102.209.191"
+        },
+        {
+           id:4,
+           first_name:"Isabeau",
+           last_name:"Featonby",
+           email:"ifeatonby3@booking.com",
+           gender:"Agender",
+           ip_address:"8.113.135.185"
+        }]
+
+
+
+        //타이틀
+        tr = document.createElement('tr');
+        th = document.createElement('th');
+        chk = document.createElement('input');
+        chk.setAttribute('type', 'checkbox')
+        th.appendChild(chk);
+        tr.appendChild(th);
+        
+        for(title of titles) {
+            th = document.createElement('th');
+            text = document.createTextNode(title);
+            chk.onchange = selAll;
+            // chk.onchange = delAll;
+            th.appendChild(text);
+            tr.appendChild(th);
+        }
+        // //버튼
+        btn = document.createElement('input');
+        btn.setAttribute('type', 'button');
+        btn.setAttribute('value', 'Select Del');
+        btn.onclick = delSelected;
+        td = document.createElement('td');
+        td.appendChild(btn);
+        tr.appendChild(td);
+        tbl.appendChild(tr);
+
+
+        //데이터 항목
+        for (data of json) {
+            tr = document.createElement('tr');
+            td = document.createElement('td');
+            chk = document.createElement('input');
+            chk.setAttribute('type', 'checkbox');
+            chk.onchange = checkSelectAll;
+            td.appendChild(chk);
+            tr.appendChild(td);
+
+            for(field in data) { //td항목들
+                td = document.createElement('td');
+                text = document.createTextNode(data[field]);
+                td.appendChild(text);
+                tr.appendChild(td);
+            }
+            //버튼
+            btn = document.createElement('input');
+            btn.setAttribute('type', 'button');
+            btn.setAttribute('value', 'Del');
+            btn.onclick = delFunc;
+            td = document.createElement('td');
+            td.appendChild(btn);
+            tr.appendChild(td);
+            tbl.appendChild(tr);
+
+
+        }  
+        //한건 선택 지우기
+        function delFunc() {
+            console.log(this.parentNode.parentNode.remove());
+
+        }
+        //전체 선택
+        function selAll() {
+            let tChk = document.querySelector('th>input[type="checkbox"]');//선택자 체크 한거만
+            let checks = document.querySelectorAll('td>input[type="checkbox"]');
+            for(let i=0; i<checks.length; i++) {
+                checks[i].checked = tChk.checked;
+            }
+        }
+
+        //선택 지우기.
+        function delSelected () {
+            let checkedAll = document.querySelectorAll('td>input[type="checkbox"]:checked');
+            for(let i=0; i<checkedAll.length; i++) {
+                checkedAll[i].parentNode.parentNode.remove();
+            }
+        }
+
+        function checkSelectAll()  {
+            // 전체 체크박스
+            const checkboxes 
+                = document.querySelectorAll('td>input[type="checkbox"]');
+            // 선택된 체크박스
+            const checked 
+                = document.querySelectorAll('td>input[natypeme="checkbox"]:checked');
+            // select all 체크박스
+            const selectAll 
+                = document.querySelector('th>input[type="checkbox"]');
+            
+            if(checkboxes.length === checked.length)  {
+                selectAll.checked = true;
+            }else {
+                selectAll.checked = false;
+            }
+
+            }
+        console.log(json);
+    </script>
+</body>
+</html>
