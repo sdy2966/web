@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery/basic.html</title>
+    <!--   1. <script src="./jquery-3.6.0.min.js"></script> -->
+    <!-- 2. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // window.onload = function () { //window가 가지고 있는 웹어쩌구 암튼 로딩 방식이 달라짐.(한번 쭉 훑고나서 불러옴)
+        //     document.getElementById('show').innerHTML = 'Hello'; //자바스크립트 언어는 우ㅣ에서부터 쭉 읽어오면서 innerHTML속성을(페이지를 전체적으로 읽지않고 걍 순서대로만)
+        // }
+
+        $(document).ready(function() {
+            // document.getElementById('show').innerHTML = 'Hello';
+            $('#show').html('Hello');//id값이 show인 곳에 html속성값에 hello를 넣어달라
+            // $('<td />').attr('id', 'first'); //document.createElement('td');랑 같은 의미이다.
+            let tbl = $('<table border="1" />').attr('id', 'tbl');
+            let tr = $('<tr />').append(
+                $('<th />').html('name'), 
+                $('<th />').html('id'));
+            tbl.append(tr);
+            console.log(tbl);
+            $('body').eq(0).append(tbl);
+        });//document가 준비가 되면 실행할 펑션을 정의 하겠다
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+    <script>
+        document.getElementById('show').innerHTML = 'Hello';
+    </script>
+</body>
+
+</html>
