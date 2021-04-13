@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mara</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
+</head>
+<body>
+    <script>
+        let marajaeryo = [
+            '마라소스', '와인', '콩가루' , '분모자', '납작당면',
+            '주스', '청경채', '푸주', '숙주', '포두부', '소고기', '양고기', '스팸',
+            '팽이버섯', '목이버섯', '새송이버섯', '배추', '포도', '연근', '새우', '콘푸로스트'
+        ]
+        let tbl, tr, td;
+        tbl = $('<table border="1" />');
+
+
+        //마우스 오버
+        // tr = $('<tr />');
+        // tr.mouseover(function() {
+        //     $(this).css('background-color', 'tomato');
+        // });
+        
+        //체크박스
+   
+        for(let i=0; i<marajaeryo.length; i++){
+            tr = $('<tr />');
+            td = $('<td />');
+            let chk= $('<input />').attr('type', 'checkbox').attr('name',marajaeryo[i]);
+            tr.append(td);
+            td.append(chk);
+            td = $('<td />').html(marajaeryo[i]);   
+            tbl.append(tr);
+            tr.append(td);           
+        }
+        
+        $('body').append(tbl);
+        $('body').append($('<button />').html('재료선택').click(select));
+
+        
+        function select() {
+        
+        let chk = $('td>input[type="checkbox"]:checked')
+        .parentsUntil('table')
+        .css('color' , 'red')
+        let values = [];
+        // alert(chk+'가 추가되었습니다.');
+        alert(values.join(' ') + '가 추가되었습니다.');
+        for (i=0; i<chk.length; i++) {
+            values[i] = chk[i].name;
+
+        }           
+        }
+
+    </script>
+</body>
+</html>
