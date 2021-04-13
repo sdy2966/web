@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="event.js"></script> -->
+    <script>
+       $.ajax({
+           url: '../MOCK_DATA.json',
+           type: 'get',
+           data: 'name=hong&age=20',//페이지
+           dataType: 'json',
+           success: function (data) {
+            let arry = data;
+            let ulTag = $('<ul />')
+            $(arry).each(function (idx, obj) {
+                console.log(idx, obj);
+                ulTag.append($('<li />').html('<a href="#">' + obj.first_name + '</a>'));
+                ulTag.append(
+                    $('<li />').append(
+                        $('<a />').html(obj.first_name)
+                                  .attr('href','get.jsp?name='+ obj.first_name)
+                        )
+                );
+            });
+            $('body').append(ulTag);
+           },
+           error:function(reject) {
+               console.error(reject.status, reject.statusText);
+           }
+       });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
