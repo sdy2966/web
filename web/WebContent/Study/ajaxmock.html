@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
+</head>
+<body>
+    <script>
+        $.ajax({
+            url: '../MOCK_DATA.json',
+            success: function(result) {
+                let objs = $(result).map(function(idx, obj){
+                    let person = {};
+                    person.id = obj.id;
+                    person.name = obj.first_name;
+                    person.email = obj.email;
+                    person.gender = obj.gender;
+                    person.ip = obj.ip_address;
+                    return person;
+                });
+                console.log(objs);
+
+                let tbl, trTag, tdTag, titles;
+                tbl = $('<table border="1" />');
+
+                titles =  {
+                    idx:"Select",
+                    id: "ID",
+                    first_name:"Name",
+                    email:"Email",
+                    gender:"Gender",
+                    ip_address:"Ip Address"
+                    }
+                
+                trTag = $('<tr />');
+                for(title in titles) {
+                thTag = $('<th />').html(titles[title]);
+                trTag.append(thTag); 
+                }   
+                tbl.append(trTag); 
+
+                $(objs).each(function(idx, obj) {
+                    trTag.on({
+                        'click' : function() {console.log($(this).children().eq(1).html());}
+                    });
+                    
+                    //쳌박
+                    trTag = $('<tr />');  
+                    tdTag = $('<td />');
+                    let ips = $('<input />').attr('type', 'checkbox');
+                    tdTag.append(ips);
+                    trTag.append(tdTag);
+
+                    
+                
+                //값 
+                for(field in obj) {
+                    trTag.append(tdTag);
+                    tdTag = $('<td />').html(obj[field]);
+                    tbl.append(trTag);
+                    trTag.append(tdTag);
+
+                    }
+                     
+                })
+                $('body').append(tbl);
+                $('body').append($('<button />').html('삭제').click(delchecked));
+            }
+        });
+        function chk() {
+            $('td>input[type="checkbox"]:checked')
+            .parentsUntil('table')
+            .css('color', 'red');
+        }
+ 
+        function delchecked() {
+            console.log($(this))
+            $('td>input[type="checkbox"]:checked')
+            .parentsUntil('table')
+            .remove();
+        }
+    </script>
+</body>
+</html>
