@@ -20,7 +20,7 @@
         let rows;
 console.log('1');
         xhtp.onreadystatechange = function () {
-            if(xhtp.readyState = 4 && xhtp.status == 200) {
+            if(xhtp.readyState == 4 && xhtp.status == 200) {
 console.log('2');
                 doc = xhtp.responseXML;
                 rows = doc.getElementsByTagName('CD');

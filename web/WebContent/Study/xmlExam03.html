@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
+</head>
+<body>
+    
+    <script>
+        
+        let xhtp = new XMLHttpRequest();
+        let rows, emp;
+        xhtp.onreadystatechange = function () {
+            if(xhtp.readyState == 4 && xhtp.status == 200) {
+                doc = xhtp.responseXML;
+                rows = doc.getElementsByTagName('record');
+                emp = '<h1>Employee List</h1>';
+                for(let i=0; i<rows.length; i++) {
+                   emp +=  '<ul><li>'+
+                    rows[i].getElementsByTagName('emp_id')[0].innerHTML+'</li>'+
+                    '<li>' + rows[i].getElementsByTagName('first_name')[0].innerHTML+'</li>'+
+                    '<li>' + rows[i].getElementsByTagName('phone_number')[0].innerHTML+'</li></ul>';           
+                }
+                document.getElementsByTagName('body')[0].innerHTML = emp;
+            }
+
+        }
+        xhtp.open('get', 'employees.xml', false);
+            xhtp.send();
+    </script> 
+    
+</body>
+</html>
